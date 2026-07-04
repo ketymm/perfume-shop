@@ -274,21 +274,26 @@ Hero სექციაში გამოყენებულია Unsplash-�
 
 <img width="1710" height="888" alt="image" src="https://github.com/user-attachments/assets/b2212578-16ca-4db5-af71-a379c19b092b" />
 
+
 * Shop / კატალოგი
 
 <img width="1710" height="902" alt="image" src="https://github.com/user-attachments/assets/8eeefd81-3431-42f8-9b5f-7d3266376024" />
+
 
 * Product Details / პროდუქტის აღწერა
 
 <img width="1709" height="902" alt="image" src="https://github.com/user-attachments/assets/e4a7ccbd-c548-4806-b6d0-223989f3fdc1" />
 
+
 * Cart / კალათა
 
 <img width="1710" height="906" alt="image" src="https://github.com/user-attachments/assets/502799bd-f030-4ecf-aa1f-2f6846f75872" />
+
   
 * Favorites / რჩეუელები
 
 <img width="1710" height="906" alt="image" src="https://github.com/user-attachments/assets/60f99941-7b4e-4940-b43d-643a68284d82" />
+
 
 * Light Mode / დღის რეჟიმი
 
