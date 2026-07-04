@@ -1,11 +1,11 @@
-# Scento — Perfume Boutique
+# Scento - Perfume Boutique
 
 Scento არის ონლაინ სუნამოების მაღაზია, შექმნილი **React**-ისა და **TypeScript**-ის გამოყენებით. პროექტი იყენებს **DummyJSON API-ს** (`fragrances` კატეგორია), რის შედეგადაც პროდუქტების მონაცემები რეალურ API-დან იტვირთება და არა ლოკალური ფაილებიდან.
 
 ## Demo
 
-* **Live Demo:** დაამატეთ Netlify / Vercel / GitHub Pages ბმული
-* **GitHub Repository:** დაამატეთ GitHub Repository-ის ბმული
+* **Live Demo:** https://scentoperfumes.netlify.app
+* **GitHub Repository:** https://github.com/ketymm/perfume-shop
 
 ---
 
@@ -270,12 +270,30 @@ Hero სექციაში გამოყენებულია Unsplash-�
 
 # Screenshots
 
-დეპლოის შემდეგ შეგიძლიათ დაამატოთ:
+* Home Page / მთავარი გვერდი
 
-* მთავარი გვერდი
-* Shop
-* Product Details
-* Cart
-* Favorites
-* Light Theme
-* Dark Theme
+<img width="1710" height="888" alt="image" src="https://github.com/user-attachments/assets/b2212578-16ca-4db5-af71-a379c19b092b" />
+
+* Shop / კატალოგი
+
+<img width="1710" height="902" alt="image" src="https://github.com/user-attachments/assets/8eeefd81-3431-42f8-9b5f-7d3266376024" />
+
+* Product Details / პროდუქტის აღწერა
+
+<img width="1709" height="902" alt="image" src="https://github.com/user-attachments/assets/e4a7ccbd-c548-4806-b6d0-223989f3fdc1" />
+
+* Cart / კალათა
+
+<img width="1710" height="906" alt="image" src="https://github.com/user-attachments/assets/502799bd-f030-4ecf-aa1f-2f6846f75872" />
+  
+* Favorites / რჩეუელები
+
+<img width="1710" height="906" alt="image" src="https://github.com/user-attachments/assets/60f99941-7b4e-4940-b43d-643a68284d82" />
+
+* Light Mode / დღის რეჟიმი
+
+<img width="1709" height="903" alt="image" src="https://github.com/user-attachments/assets/04dedf3e-f769-40a0-916d-3ac26c841006" />
+
+* Dark Mode / ღამის რეჟიმი
+
+<img width="1710" height="899" alt="image" src="https://github.com/user-attachments/assets/06bff1a1-eae5-4e64-8fd6-b0f4ee48e371" />
