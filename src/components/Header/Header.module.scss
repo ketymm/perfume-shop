@@ -1,0 +1,158 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  background: var(--bg-base);
+  @include m.hairline(bottom);
+  backdrop-filter: blur(10px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: v.$sp-5;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--accent-gold);
+  border-radius: 50%;
+  font-family: v.$font-display;
+  font-size: v.$fs-md;
+  color: var(--accent-gold);
+}
+
+.logoText {
+  font-size: v.$fs-lg;
+  color: var(--text-primary);
+  display: none;
+
+  @include m.mq(sm) {
+    display: inline;
+  }
+}
+
+.nav {
+  display: none;
+  gap: v.$sp-6;
+
+  @include m.mq(md) {
+    display: flex;
+  }
+}
+
+.navLink {
+  @include m.overline;
+  color: var(--text-secondary);
+  position: relative;
+  padding-block: v.$sp-2;
+  transition: color v.$dur-fast v.$ease-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    height: 1px;
+    background: var(--accent-gold);
+    transition: right v.$dur-base v.$ease-out;
+  }
+
+  &:hover,
+  &.active {
+    color: var(--text-primary);
+  }
+
+  &.active::after,
+  &:hover::after {
+    right: 0;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-3;
+}
+
+.iconLink {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-primary);
+  @include m.focus-ring;
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding-inline: 3px;
+  border-radius: 999px;
+  background: var(--accent-gold);
+  color: var(--bg-base);
+  font-size: 10px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+}
+
+.menuToggle {
+  @include m.button-reset;
+  display: grid;
+  gap: 4px;
+  width: 22px;
+  padding: 6px 0;
+
+  @include m.mq(md) {
+    display: none;
+  }
+
+  span {
+    height: 1.5px;
+    background: var(--text-primary);
+    transition:
+      transform v.$dur-fast v.$ease-out,
+      opacity v.$dur-fast v.$ease-out;
+  }
+}
+
+.navOpen {
+  display: flex;
+}
+
+@media (max-width: v.$bp-md) {
+  .nav {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--bg-raised);
+    flex-direction: column;
+    padding: v.$sp-5;
+    gap: v.$sp-4;
+    @include m.hairline(bottom);
+    animation: rise-in v.$dur-fast v.$ease-out both;
+  }
+}

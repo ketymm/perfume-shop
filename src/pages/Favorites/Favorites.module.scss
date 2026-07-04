@@ -1,0 +1,49 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-block: v.$sp-6 v.$sp-9;
+}
+
+.title {
+  font-size: v.$fs-2xl;
+  margin-bottom: v.$sp-6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$sp-5;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.empty {
+  text-align: center;
+  padding-block: v.$sp-9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$sp-4;
+  color: var(--text-secondary);
+}
+
+.emptyIcon {
+  font-size: v.$fs-2xl;
+  color: var(--accent-rose);
+}
+
+.emptyCta {
+  margin-top: v.$sp-2;
+  padding: v.$sp-3 v.$sp-6;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  border-radius: v.$radius-sm;
+  font-size: v.$fs-sm;
+}

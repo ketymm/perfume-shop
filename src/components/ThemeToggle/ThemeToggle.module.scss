@@ -1,0 +1,36 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.toggle {
+  @include m.button-reset;
+  @include m.focus-ring;
+}
+
+.track {
+  display: inline-flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border-hairline);
+  padding: 2px;
+  transition: background v.$dur-base v.$ease-out;
+}
+
+.thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  color: var(--bg-base);
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+  transform: translateX(0);
+  transition: transform v.$dur-base v.$ease-out;
+}
+
+.thumbDark {
+  transform: translateX(20px);
+}

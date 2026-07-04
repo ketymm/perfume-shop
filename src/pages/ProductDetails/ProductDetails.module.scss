@@ -1,0 +1,371 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-block: v.$sp-6 v.$sp-9;
+}
+
+.breadcrumb {
+  font-size: v.$fs-xs;
+  color: var(--text-muted);
+  margin-bottom: v.$sp-6;
+
+  a {
+    transition: color v.$dur-fast v.$ease-out;
+    &:hover {
+      color: var(--accent-gold);
+    }
+  }
+
+  span {
+    color: var(--text-secondary);
+  }
+}
+
+.layout {
+  display: grid;
+  gap: v.$sp-7;
+
+  @include m.mq(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: v.$sp-8;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+}
+
+.mainImageBtn {
+  @include m.button-reset;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: var(--bg-sunken);
+  cursor: zoom-in;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform v.$dur-slow v.$ease-out;
+
+  .mainImageBtn:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.thumbs {
+  display: flex;
+  gap: v.$sp-2;
+}
+
+.thumb {
+  @include m.button-reset;
+  width: 64px;
+  height: 64px;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition:
+    opacity v.$dur-fast v.$ease-out,
+    border-color v.$dur-fast v.$ease-out;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.thumbActive {
+  opacity: 1;
+  border-color: var(--accent-gold);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+}
+
+.title {
+  font-size: v.$fs-2xl;
+  color: var(--text-primary);
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+}
+
+.stars {
+  color: var(--accent-gold);
+  letter-spacing: 2px;
+}
+
+.ratingValue {
+  color: var(--text-muted);
+  font-size: v.$fs-sm;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: v.$sp-3;
+  margin-top: v.$sp-2;
+}
+
+.price {
+  font-family: v.$font-display;
+  font-size: v.$fs-2xl;
+  color: var(--accent-gold);
+}
+
+.priceOld {
+  font-size: v.$fs-md;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.discountTag {
+  background: var(--accent-burgundy);
+  color: v.$color-ivory-100;
+  font-size: v.$fs-xs;
+  padding: 3px 8px;
+  border-radius: v.$radius-sm;
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-top: v.$sp-2;
+}
+
+.stockRow {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  font-size: v.$fs-sm;
+  color: var(--success);
+  margin-top: v.$sp-2;
+}
+
+.stockDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.stockOut {
+  color: var(--danger);
+}
+
+.buyRow {
+  display: flex;
+  align-items: stretch;
+  gap: v.$sp-3;
+  margin-top: v.$sp-5;
+  flex-wrap: wrap;
+}
+
+.qtyControl {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-hairline);
+  border-radius: v.$radius-sm;
+
+  button {
+    @include m.button-reset;
+    @include m.focus-ring;
+    width: 40px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    color: var(--text-primary);
+    font-size: v.$fs-md;
+  }
+
+  span {
+    width: 32px;
+    text-align: center;
+    font-size: v.$fs-md;
+  }
+}
+
+.addBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  flex: 1;
+  min-width: 160px;
+  background: var(--accent-gold);
+  color: v.$color-noir-900;
+  border-radius: v.$radius-sm;
+  font-size: v.$fs-sm;
+  letter-spacing: 0.04em;
+  transition:
+    transform v.$dur-fast v.$ease-out,
+    opacity v.$dur-fast v.$ease-out;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.favBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-hairline);
+  border-radius: v.$radius-sm;
+  color: var(--text-primary);
+  transition:
+    color v.$dur-fast v.$ease-out,
+    border-color v.$dur-fast v.$ease-out;
+
+  &:hover {
+    border-color: var(--accent-rose);
+  }
+}
+
+.favBtnActive {
+  color: var(--accent-rose);
+  border-color: var(--accent-rose);
+}
+
+.metaList {
+  margin-top: v.$sp-6;
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+  padding-top: v.$sp-5;
+  @include m.hairline(top);
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: v.$sp-4;
+    font-size: v.$fs-sm;
+  }
+
+  dt {
+    color: var(--text-muted);
+  }
+
+  dd {
+    margin: 0;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+}
+
+// --- Reviews ---
+.reviews {
+  margin-top: v.$sp-9;
+
+  h2 {
+    font-size: v.$fs-xl;
+    margin-bottom: v.$sp-5;
+  }
+}
+
+.reviewGrid {
+  display: grid;
+  gap: v.$sp-4;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.reviewCard {
+  padding: v.$sp-5;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-hairline);
+  border-radius: v.$radius-md;
+
+  p {
+    margin: v.$sp-2 0;
+    color: var(--text-secondary);
+    font-size: v.$fs-sm;
+    line-height: 1.6;
+  }
+}
+
+.reviewStars {
+  color: var(--accent-gold);
+  font-size: v.$fs-sm;
+}
+
+.reviewer {
+  font-size: v.$fs-xs;
+  color: var(--text-muted);
+}
+
+// --- Related ---
+.related {
+  margin-top: v.$sp-9;
+
+  h2 {
+    font-size: v.$fs-xl;
+    margin-bottom: v.$sp-5;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$sp-5;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// --- Gallery modal ---
+.galleryModal {
+  img {
+    width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+}
+
+.notFound {
+  text-align: center;
+  padding-block: v.$sp-9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$sp-5;
+  color: var(--text-secondary);
+}
+
+.backBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  padding: v.$sp-3 v.$sp-6;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  border-radius: v.$radius-sm;
+}

@@ -1,0 +1,63 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background: var(--bg-sunken);
+  margin-top: v.$sp-9;
+  @include m.hairline(top);
+}
+
+.inner {
+  display: grid;
+  gap: v.$sp-6;
+  padding-block: v.$sp-8;
+
+  @include m.mq(md) {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.brand {
+  max-width: 320px;
+}
+
+.logo {
+  font-size: v.$fs-xl;
+  color: var(--text-primary);
+}
+
+.tagline {
+  margin-top: v.$sp-3;
+  color: var(--text-secondary);
+  font-size: v.$fs-sm;
+  line-height: 1.6;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+
+  a {
+    color: var(--text-secondary);
+    font-size: v.$fs-sm;
+    width: fit-content;
+    transition: color v.$dur-fast v.$ease-out;
+
+    &:hover {
+      color: var(--accent-gold);
+    }
+  }
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: v.$fs-sm;
+}
+
+.bottom {
+  @include m.hairline(top);
+  padding-block: v.$sp-5;
+  font-size: v.$fs-xs;
+  color: var(--text-muted);
+}

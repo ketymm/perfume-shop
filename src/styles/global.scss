@@ -1,0 +1,218 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+// ==========================================================================
+// Theme tokens — exposed as CSS custom properties so they can flip at
+// runtime via the [data-theme] attribute (see ThemeContext)
+// ==========================================================================
+:root,
+[data-theme='dark'] {
+  --bg-base: #{v.$color-noir-900};
+  --bg-raised: #{v.$color-noir-800};
+  --bg-sunken: #{v.$color-noir-950};
+  --text-primary: #{v.$color-ivory-100};
+  --text-secondary: #{rgba(v.$color-ivory-100, 0.64)};
+  --text-muted: #{rgba(v.$color-ivory-100, 0.4)};
+  --border-hairline: #{rgba(v.$color-ivory-100, 0.12)};
+  --accent-gold: #{v.$color-gold-500};
+  --accent-gold-strong: #{v.$color-gold-400};
+  --accent-rose: #{v.$color-rose-500};
+  --accent-burgundy: #{v.$color-burgundy-700};
+  --surface-overlay: #{rgba(v.$color-noir-950, 0.72)};
+  --shadow-color: #{rgba(0, 0, 0, 0.5)};
+  --danger: #{v.$color-danger};
+  --success: #{v.$color-success};
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg-base: #{v.$color-ivory-50};
+  --bg-raised: #ffffff;
+  --bg-sunken: #{v.$color-ivory-200};
+  --text-primary: #{v.$color-noir-800};
+  --text-secondary: #{rgba(v.$color-noir-800, 0.66)};
+  --text-muted: #{rgba(v.$color-noir-800, 0.42)};
+  --border-hairline: #{rgba(v.$color-noir-800, 0.12)};
+  --accent-gold: #{v.$color-gold-600};
+  --accent-gold-strong: #{v.$color-gold-500};
+  --accent-rose: #{v.$color-rose-600};
+  --accent-burgundy: #{v.$color-burgundy-700};
+  --surface-overlay: #{rgba(v.$color-noir-900, 0.6)};
+  --shadow-color: #{rgba(60, 46, 30, 0.18)};
+  --danger: #{v.$color-danger};
+  --success: #{v.$color-success};
+  color-scheme: light;
+}
+
+// ==========================================================================
+// Reset
+// ==========================================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: v.$font-body;
+  font-weight: 300;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  transition:
+    background-color v.$dur-base v.$ease-out,
+    color v.$dur-base v.$ease-out;
+  -webkit-font-smoothing: antialiased;
+  min-width: 320px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--accent-gold);
+  color: var(--bg-base);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-shell main {
+  flex: 1;
+}
+
+.font-display {
+  font-family: v.$font-display;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.overline {
+  @include m.overline;
+  color: var(--accent-gold);
+}
+
+.container {
+  @include m.container;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// ==========================================================================
+// Shared animations
+// ==========================================================================
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.animate-rise {
+  animation: rise-in v.$dur-slow v.$ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Scrollbar (webkit) — subtle, matches the boutique mood
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-sunken);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: v.$radius-lg;
+  border: 2px solid var(--bg-sunken);
+}

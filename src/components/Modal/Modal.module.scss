@@ -1,0 +1,60 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: v.$z-modal-overlay;
+  background: var(--surface-overlay);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fade-in v.$dur-fast v.$ease-out both;
+
+  @include m.mq(md) {
+    align-items: center;
+  }
+}
+
+.dialog {
+  position: relative;
+  z-index: v.$z-modal;
+  width: 100%;
+  max-width: 780px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--bg-raised);
+  border-radius: v.$radius-lg v.$radius-lg 0 0;
+  box-shadow: 0 30px 60px var(--shadow-color);
+  animation: rise-in v.$dur-base v.$ease-out both;
+
+  @include m.mq(md) {
+    border-radius: v.$radius-lg;
+    animation: scale-in v.$dur-base v.$ease-out both;
+  }
+}
+
+.close {
+  @include m.button-reset;
+  @include m.focus-ring;
+  position: absolute;
+  top: v.$sp-4;
+  right: v.$sp-4;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-sunken);
+  color: var(--text-primary);
+  z-index: 2;
+  transition:
+    transform v.$dur-fast v.$ease-out,
+    background v.$dur-fast v.$ease-out;
+
+  &:hover {
+    background: var(--accent-gold);
+    color: var(--bg-base);
+    transform: rotate(90deg);
+  }
+}

@@ -1,0 +1,77 @@
+@use 'sass:math';
+@use 'variables' as v;
+
+@mixin container {
+  width: 100%;
+  max-width: v.$container-max;
+  margin-inline: auto;
+  padding-inline: v.$sp-5;
+
+  @media (min-width: v.$bp-lg) {
+    padding-inline: v.$sp-7;
+  }
+}
+
+// Mobile-first breakpoint helper: @include mq(md) { ... }
+@mixin mq($bp) {
+  @if $bp == xs {
+    @media (min-width: v.$bp-xs) {
+      @content;
+    }
+  } @else if $bp == sm {
+    @media (min-width: v.$bp-sm) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (min-width: v.$bp-md) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (min-width: v.$bp-lg) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (min-width: v.$bp-xl) {
+      @content;
+    }
+  } @else if $bp == xxl {
+    @media (min-width: v.$bp-2xl) {
+      @content;
+    }
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+  }
+}
+
+@mixin hairline($side: bottom, $color: var(--border-hairline)) {
+  border-#{$side}: 1px solid $color;
+}
+
+@mixin button-reset {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin overline {
+  font-family: v.$font-utility;
+  font-size: v.$fs-xs;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

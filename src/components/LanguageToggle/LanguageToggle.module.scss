@@ -1,0 +1,24 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.toggle {
+  @include m.button-reset;
+  @include m.focus-ring;
+  @include m.overline;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+
+  span {
+    transition: color v.$dur-fast v.$ease-out;
+  }
+}
+
+.active {
+  color: var(--accent-gold);
+}
+
+.divider {
+  color: var(--text-muted);
+}

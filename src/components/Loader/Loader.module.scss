@@ -1,0 +1,71 @@
+@use '../../styles/variables' as v;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$sp-4;
+  padding-block: v.$sp-9;
+}
+
+.drop {
+  width: 28px;
+  height: 36px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(45deg);
+  background: var(--accent-gold);
+  animation: pulse-drop 1.1s v.$ease-in-out infinite;
+}
+
+@keyframes pulse-drop {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: rotate(45deg) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.label {
+  font-size: v.$fs-sm;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+}
+
+.cardImage {
+  aspect-ratio: 3 / 4;
+  border-radius: v.$radius-md;
+  background: linear-gradient(
+    100deg,
+    var(--bg-sunken) 30%,
+    var(--bg-raised) 50%,
+    var(--bg-sunken) 70%
+  );
+  background-size: 300% 100%;
+  animation: shimmer-slide 1.6s ease-in-out infinite;
+}
+
+.cardLine {
+  height: 12px;
+  border-radius: v.$radius-sm;
+  background: var(--bg-sunken);
+}
+
+@keyframes shimmer-slide {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

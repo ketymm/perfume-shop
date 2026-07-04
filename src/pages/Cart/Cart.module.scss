@@ -1,0 +1,249 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-block: v.$sp-6 v.$sp-9;
+}
+
+.title {
+  font-size: v.$fs-2xl;
+  margin-bottom: v.$sp-6;
+}
+
+.layout {
+  display: grid;
+  gap: v.$sp-6;
+  align-items: flex-start;
+
+  @include m.mq(lg) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  grid-template-areas:
+    'image info remove'
+    'image qty price';
+  gap: v.$sp-2 v.$sp-4;
+  align-items: center;
+  padding: v.$sp-4;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-hairline);
+  border-radius: v.$radius-md;
+  animation: rise-in v.$dur-base v.$ease-out both;
+
+  @include m.mq(sm) {
+    grid-template-columns: 72px 1fr auto auto auto;
+    grid-template-areas: 'image info qty price remove';
+  }
+}
+
+.rowImage {
+  grid-area: image;
+  width: 64px;
+  height: 64px;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  background: var(--bg-sunken);
+
+  @include m.mq(sm) {
+    width: 72px;
+    height: 72px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.rowInfo {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.rowTitle {
+  font-size: v.$fs-sm;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--accent-gold);
+  }
+}
+
+.rowBrand {
+  font-size: v.$fs-xs;
+  color: var(--text-muted);
+}
+
+.qtyControl {
+  grid-area: qty;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-hairline);
+  border-radius: v.$radius-sm;
+  width: fit-content;
+
+  button {
+    @include m.button-reset;
+    @include m.focus-ring;
+    width: 28px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    color: var(--text-primary);
+  }
+
+  span {
+    width: 24px;
+    text-align: center;
+    font-size: v.$fs-sm;
+  }
+}
+
+.rowPrice {
+  grid-area: price;
+  font-family: v.$font-display;
+  color: var(--accent-gold);
+  font-size: v.$fs-md;
+  justify-self: end;
+
+  @include m.mq(sm) {
+    justify-self: auto;
+  }
+}
+
+.removeBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  grid-area: remove;
+  justify-self: end;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  transition: color v.$dur-fast v.$ease-out;
+
+  &:hover {
+    color: var(--danger);
+  }
+}
+
+.summary {
+  position: sticky;
+  top: 96px;
+  padding: v.$sp-5;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-hairline);
+  border-radius: v.$radius-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: v.$fs-sm;
+  color: var(--text-secondary);
+}
+
+.summaryTotal {
+  font-family: v.$font-display;
+  font-size: v.$fs-lg;
+  color: var(--text-primary);
+}
+
+.checkoutBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  padding: v.$sp-4;
+  background: var(--accent-gold);
+  color: v.$color-noir-900;
+  border-radius: v.$radius-sm;
+  text-align: center;
+  font-size: v.$fs-sm;
+  letter-spacing: 0.04em;
+  transition: transform v.$dur-fast v.$ease-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// --- Empty state ---
+.empty {
+  text-align: center;
+  padding-block: v.$sp-9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$sp-4;
+  color: var(--text-secondary);
+}
+
+.emptyIcon {
+  font-size: v.$fs-2xl;
+  color: var(--accent-gold);
+}
+
+.emptyCta {
+  margin-top: v.$sp-2;
+  padding: v.$sp-3 v.$sp-6;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  border-radius: v.$radius-sm;
+  font-size: v.$fs-sm;
+}
+
+// --- Checkout modal ---
+.checkoutModal {
+  padding: v.$sp-8 v.$sp-6;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$sp-5;
+
+  h2 {
+    font-size: v.$fs-xl;
+    max-width: 360px;
+  }
+}
+
+.checkoutIcon {
+  font-size: v.$fs-3xl;
+  color: var(--accent-gold);
+  animation: scale-in v.$dur-slow v.$ease-out both;
+}
+
+.checkoutSubtitle {
+  font-size: v.$fs-sm;
+  color: var(--text-secondary);
+  margin-top: calc(-1 * v.$sp-3);
+}
+
+.checkoutClose {
+  @include m.button-reset;
+  @include m.focus-ring;
+  padding: v.$sp-3 v.$sp-6;
+  background: var(--accent-gold);
+  color: v.$color-noir-900;
+  border-radius: v.$radius-sm;
+}
