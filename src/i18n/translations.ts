@@ -17,7 +17,7 @@ export const translations = {
       secondaryCta: 'ჩვენს შესახებ',
     },
     home: {
-      featuredTitle: 'ახალი მოსვლები',
+      featuredTitle: 'ახალი დამატებულები',
       featuredSubtitle: 'ამ სეზონის ყველაზე მოთხოვნადი არომატები',
       viewAll: 'ყველას ნახვა',
       whyTitle: 'რატომ Scento',
@@ -115,7 +115,7 @@ export const translations = {
       secondaryCta: 'About us',
     },
     home: {
-      featuredTitle: 'New arrivals',
+      featuredTitle: 'Recently added',
       featuredSubtitle: "This season's most sought-after scents",
       viewAll: 'View all',
       whyTitle: 'Why Scento',
